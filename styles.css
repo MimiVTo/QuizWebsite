@@ -1,0 +1,21 @@
+
+body{
+    background-image: url(background.jpeg);
+}
+
+.container{
+    margin: 0 auto;
+    text-align: center;
+    width: 500px;
+    background-color:rgb(132, 149, 132);
+    border: 5px solid white;
+    padding: 20px;
+}
+
+.correct{
+    background-color: rgb(102, 182, 102);
+}
+
+.incorrect{
+    background-color: red;
+}
