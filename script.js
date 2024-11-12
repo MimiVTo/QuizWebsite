@@ -4,17 +4,17 @@ var questions={
     "questionOne":{
         question: "What's Mimi's Lastname?",
         options:["Vuong", "Ai", "To", "Luu"],
-        answer: 2
+        answer: "To"
     },
     "questionTwo":{
         question: "What's Mimi's Favorite Jewelry Color?",
         options:["Gold", "Silver", "Rosegold", "Copper"],
-        answer: 0
+        answer: "Gold"
     },
     "questionThree":{
         question: "What's Mimi's Cat's Name?",
         options:["Misty", "Sticks", "Ellie", "Imani"],
-        answer: 1
+        answer: "Sticks"
     },
     "questionFour":{
         question: "",
@@ -48,16 +48,21 @@ var questions={
     }
 }
 
+// CONTAINERS -------------------------------------
 var questionContainer = document.getElementById("titleContainer");
 var responseContainer = document.getElementById("container");
 
 // GLOBAL BUTTONS ---------------------------------
 var next = document.getElementById("nextBtn");
 
+// NUMBER TRACKING --------------------------------
+var question = 0;
+var correctAnswers = 0;
+
 // FUNCTIONS --------------------------------------
 
 function quizBegin(){
-    
+    //Loads up the question and 
 }
 
 next.addEventListener("click", quizBegin);
