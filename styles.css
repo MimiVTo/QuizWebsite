@@ -12,6 +12,11 @@ body{
     padding: 20px;
 }
 
+.options{
+    text-align: left;
+    display: inline-block;
+}
+
 .correct{
     background-color: rgb(102, 182, 102);
 }
