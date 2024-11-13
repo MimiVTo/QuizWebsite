@@ -1,102 +1,102 @@
 // VARIABLES --------------------------------------
 
 var questions={
-    "questionOne":{
+    1:{
         question: "What's Mimi's Lastname?",
         options:["Vuong", "Ai", "To", "Luu"],
         answer: "To"
     },
-    "questionTwo":{
+    2:{
         question: "What's Mimi's Favorite Jewelry Color?",
         options:["Gold", "Silver", "Rosegold", "Copper"],
         answer: "Gold"
     },
-    "questionThree":{
+    3:{
         question: "What's Mimi's Cat's Name?",
         options:["Misty", "Sticks", "Ellie", "Imani"],
         answer: "Sticks"
     },
-    "questionFour":{
+    4:{
         question: "What's Mimi's Favorite Food?",
         options:["Pizza", "Chow Fun", "Sushi", "Shumai"],
         answer: "Chow Fun"
     },
-    "questionFive":{
+    5:{
         question: "What's Mimi's favorite Manhwa?",
         options:["Lookism", "Don't Pick Up The Trash You Threw Away", "Weak Hero", "Lumine"],
         answer: "Weak Hero"
     },
-    "questionSix":{
+    6:{
         question: "Who's Mimi's Favorite Character?",
         options:["Wolf Keum", "Joseph Desaulnier", "Bayonetta", "Yor Forger"],
         answer: "Wolf Keum"
     },
-    "questionSeven":{
+    7:{
         question: "",
         options:[],
         answer:""
     },
-    "questionEight":{
+    8:{
         question: "",
         options:[],
         answer:""
     },
-    "questionNine":{
+    9:{
         question: "",
         options:[],
         answer:""
     },
-    "questionTen":{
+    10:{
         question: "",
         options:[],
         answer:""
     },
-    "questionEleven":{
+    11:{
         question: "",
         options:[],
         answer:""
     },
-    "questionTwelve":{
+    12:{
         question: "",
         options:[],
         answer:""
     },
-    "questionThirteen":{
+    13:{
         question: "",
         options:[],
         answer:""
     },
-    "questionFourteen":{
+    14:{
         question: "",
         options:[],
         answer:""
     },
-    "questionFifteen":{
+    15:{
         question: "",
         options:[],
         answer:""
     },
-    "questionSixteen":{
+    16:{
         question: "",
         options:[],
         answer:""
     },
-    "questionSeventeen":{
+    17:{
         question: "",
         options:[],
         answer:""
     },
-    "questionEighteen":{
+    18:{
         question: "",
         options:[],
         answer:""
     },
-    "questionNineteen":{
+    19:{
         question: "",
         options:[],
         answer:""
     },
-    "questionTwenty":{
+    20:{
         question: "",
         options:[],
         answer:""
@@ -107,35 +107,80 @@ var questions={
 var questionContainer = document.getElementById("titleContainer");
 var responseContainer = document.getElementById("container");
 
-// OPTIONS FOR ANSWERING THE QUESTION -------------
-var optionA = document.getElementById("optionA");
-var optionB = document.getElementById("optionB");
-var optionC = document.getElementById("optionC");
-var optionD = document.getElementById("optionD");
-
 // GLOBAL BUTTONS ---------------------------------
 var next = document.getElementById("nextBtn");
 
 // BUTTONS PRESSED ------------
 
-var buttonA = document.getElementById("buttonA");
-var buttonB = document.getElementById("buttonB");
-var buttonC = document.getElementById("buttonC");
-var buttonD = document.getElementById("buttonD");
+var btnA = document.getElementById("buttonA");
+var btnB = document.getElementById("buttonB");
+var btnC = document.getElementById("buttonC");
+var btnD = document.getElementById("buttonD");
 
 // NUMBER TRACKING --------------------------------
-var question = 0;
-var correctAnswers = 0;
+var currentQuestion = 1;
+var score = 0;
 
 // FUNCTIONS --------------------------------------
 
 function loadedQuestion(){
     //First question asked
+    questionContainer.innerText = questions[currentQuestion].question;
+
+    //Load up first options
+    btnA.innerText = questions[currentQuestion].options[0];
+    btnB.innerText = questions[currentQuestion].options[1];
+    btnC.innerText = questions[currentQuestion].options[2];
+    btnD.innerText = questions[currentQuestion].options[3];
 
 }
 
 function nextQuestion(){
-    //Loads up the question and 
+
+    if (currentQuestion>20){
+        finishedQuiz();
+    }
+    //Loads up the next question
+    questionContainer.innerText = questions[currentQuestion].question;
+
+    //Loads up next option
+    btnA.innerText = questions[currentQuestion].options[0];
+    btnB.innerText = questions[currentQuestion].options[1];
+    btnC.innerText = questions[currentQuestion].options[2];
+    btnD.innerText = questions[currentQuestion].options[3];
+
 }
 
+function checkCorrectness(event){
+
+    var choice = event.target.innerText;
+    console.log(choice);
+
+    if (choice === questions[currentQuestion].answer){
+        choice.classList.add("correct");
+        score++;
+    }
+    else{
+        choice.classList.add("incorrect");
+    }
+    //Adding to the question counter
+    currentQuestion++;
+}
+
+// function finishedQuiz(){
+//     // var finishedNote = document.createElement("p");
+//     // finishedNote.innerText
+//     // responseContainer.appendChild(finishedNote);
+// }
+
+loadedQuestion();
+
+// CLICKED ITEMS ------------------------------------
 next.addEventListener("click", nextQuestion);
+
+btnA.addEventListener("click", checkCorrectness);
+btnB.addEventListener("click", checkCorrectness);
+btnC.addEventListener("click", checkCorrectness);
+btnD.addEventListener("click", checkCorrectness);
+
+
