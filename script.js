@@ -119,9 +119,10 @@ var btnB = document.getElementById("buttonB");
 var btnC = document.getElementById("buttonC");
 var btnD = document.getElementById("buttonD");
 
-// NUMBER TRACKING --------------------------------
+// TRACKING --------------------------------
 var currentQuestion = 1;
 var score = 0;
+var firstTime = true;
 
 // FUNCTIONS --------------------------------------
 
@@ -140,6 +141,7 @@ function loadedQuestion(){
 function nextQuestion(){
     //Adding to the question counter
     currentQuestion++;
+    firstTime = true;
 
     if (currentQuestion>20){
         finishedQuiz();
@@ -174,6 +176,7 @@ function checkCorrectness(event){
     //Variables
     var choice = event.target;
     var wordChosen = choice.innerText;
+    
     //Checking
     console.log(wordChosen);
     console.log(questions[currentQuestion].answer);
@@ -181,11 +184,17 @@ function checkCorrectness(event){
     if(wordChosen === questions[currentQuestion].answer){
         //toggling the class correct
         choice.classList.add("correct");
-        score++;
+
+        if (firstTime === true){
+            score++;
+        }
+
+        firstTime = false;
     }
     else{
         //toggling the class incorrect
         choice.classList.add("incorrect");
+        firstTime = false;
     }
 
     bodyContainer.appendChild(nextBtn);
